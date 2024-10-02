@@ -1,8 +1,19 @@
-import React from 'react';
-import { items } from '../data/items';
+import React, { useState, useEffect } from 'react';
 import ItemCard from '../components/ItemCard';
+import { getAllItems } from '../utils/database';
 
 const Index = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const loadItems = () => {
+      const loadedItems = getAllItems();
+      setItems(loadedItems);
+    };
+
+    loadItems();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-100 py-8">
       <div className="container mx-auto">
