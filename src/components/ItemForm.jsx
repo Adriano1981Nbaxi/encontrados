@@ -12,6 +12,8 @@ const ItemForm = ({ onItemAdded }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
   const [status, setStatus] = useState('lost');
+  const [finderName, setFinderName] = useState('');
+  const [finderPhone, setFinderPhone] = useState('');
   const fileInputRef = useRef(null);
 
   const handleSubmit = (e) => {
@@ -20,7 +22,9 @@ const ItemForm = ({ onItemAdded }) => {
       name,
       description,
       image,
-      status
+      status,
+      finderName: status === 'found' ? finderName : '',
+      finderPhone: status === 'found' ? finderPhone : ''
     };
     addItem(newItem);
     onItemAdded();
@@ -29,6 +33,8 @@ const ItemForm = ({ onItemAdded }) => {
     setDescription('');
     setImage('');
     setStatus('lost');
+    setFinderName('');
+    setFinderPhone('');
   };
 
   const handleImageSelection = (e) => {
@@ -91,6 +97,18 @@ const ItemForm = ({ onItemAdded }) => {
           <Label htmlFor="found">Encontrado</Label>
         </div>
       </RadioGroup>
+      {status === 'found' && (
+        <>
+          <div>
+            <Label htmlFor="finderName">Nome de quem encontrou</Label>
+            <Input id="finderName" value={finderName} onChange={(e) => setFinderName(e.target.value)} required />
+          </div>
+          <div>
+            <Label htmlFor="finderPhone">Telefone de quem encontrou</Label>
+            <Input id="finderPhone" value={finderPhone} onChange={(e) => setFinderPhone(e.target.value)} required />
+          </div>
+        </>
+      )}
       <Button type="submit">Adicionar Item</Button>
     </form>
   );

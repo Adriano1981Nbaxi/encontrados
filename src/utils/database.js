@@ -10,7 +10,9 @@ const initializeDatabase = () => {
       description: "Carteira de couro marrom encontrada no parque central.",
       image: "https://images.unsplash.com/photo-1627123424574-724758594e93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80",
       status: "found",
-      date: "2023-05-15"
+      date: "2023-05-15",
+      finderName: "João Silva",
+      finderPhone: "(11) 98765-4321"
     },
     {
       id: 2,
@@ -18,7 +20,9 @@ const initializeDatabase = () => {
       description: "iPhone 12 perdido na praça principal. Capa azul.",
       image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2329&q=80",
       status: "lost",
-      date: "2023-05-18"
+      date: "2023-05-18",
+      finderName: "",
+      finderPhone: ""
     },
     // ... outros itens padrão ...
   ];

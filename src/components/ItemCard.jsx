@@ -11,12 +11,18 @@ const ItemCard = ({ item }) => {
       <CardContent className="p-4">
         <CardTitle className="text-xl mb-2">{item.name}</CardTitle>
         <p className="text-gray-600 mb-2">{item.description}</p>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center mb-2">
           <Badge variant={item.status === 'lost' ? 'destructive' : 'success'}>
             {item.status === 'lost' ? 'Perdido' : 'Achado'}
           </Badge>
           <span className="text-sm text-gray-500">{item.date}</span>
         </div>
+        {item.status === 'found' && (
+          <div className="mt-2 text-sm">
+            <p><strong>Encontrado por:</strong> {item.finderName}</p>
+            <p><strong>Telefone:</strong> {item.finderPhone}</p>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
