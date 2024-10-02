@@ -1,4 +1,5 @@
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 // Função para inicializar a base de dados com dados padrão
 const initializeDatabase = () => {
@@ -33,13 +34,31 @@ export const getAllItems = () => {
   return JSON.parse(localStorage.getItem('lostAndFoundItems'));
 };
 
+// Função para formatar o dia da semana em português
+const formatDayOfWeek = (date) => {
+  const daysOfWeek = {
+    'Monday': 'segunda-feira',
+    'Tuesday': 'terça-feira',
+    'Wednesday': 'quarta-feira',
+    'Thursday': 'quinta-feira',
+    'Friday': 'sexta-feira',
+    'Saturday': 'sábado',
+    'Sunday': 'domingo'
+  };
+  const dayOfWeek = format(date, 'EEEE', { locale: ptBR });
+  return daysOfWeek[dayOfWeek] || dayOfWeek;
+};
+
 // Função para adicionar um novo item
 export const addItem = (item) => {
   const items = getAllItems();
+  const newDate = new Date();
+  const formattedDate = format(newDate, "yyyy-MM-dd", { locale: ptBR });
+  const dayOfWeek = formatDayOfWeek(newDate);
   const newItem = {
     ...item,
     id: Date.now(),
-    date: format(new Date(), "yyyy-MM-dd 'on' EEEE") // Add day of the week
+    date: `${formattedDate} em ${dayOfWeek}`
   };
   items.push(newItem);
   localStorage.setItem('lostAndFoundItems', JSON.stringify(items));
