@@ -37,13 +37,13 @@ export const getAllItems = () => {
 // Função para formatar o dia da semana em português
 const formatDayOfWeek = (date) => {
   const daysOfWeek = {
-    'Monday': 'segunda-feira',
-    'Tuesday': 'terça-feira',
-    'Wednesday': 'quarta-feira',
-    'Thursday': 'quinta-feira',
-    'Friday': 'sexta-feira',
-    'Saturday': 'sabado',
-    'Sunday': 'domingo'
+    'Monday': 'Segunda-feira',
+    'Tuesday': 'Terça-feira',
+    'Wednesday': 'Quarta-feira',
+    'Thursday': 'Quinta-feira',
+    'Friday': 'Sexta-feira',
+    'Saturday': 'Sábado',
+    'Sunday': 'Domingo'
   };
   const dayOfWeek = format(date, 'EEEE', { locale: ptBR });
   return daysOfWeek[dayOfWeek] || dayOfWeek;
