@@ -42,7 +42,7 @@ const formatDayOfWeek = (date) => {
     'Wednesday': 'quarta-feira',
     'Thursday': 'quinta-feira',
     'Friday': 'sexta-feira',
-    'Saturday': 'sábado',
+    'Saturday': 'sabado',
     'Sunday': 'domingo'
   };
   const dayOfWeek = format(date, 'EEEE', { locale: ptBR });
