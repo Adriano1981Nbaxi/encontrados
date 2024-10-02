@@ -18,8 +18,7 @@ const ItemForm = ({ onItemAdded }) => {
       name,
       description,
       image,
-      status,
-      date: new Date().toISOString().split('T')[0]
+      status
     };
     addItem(newItem);
     onItemAdded();

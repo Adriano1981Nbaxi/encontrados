@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 // Função para inicializar a base de dados com dados padrão
 const initializeDatabase = () => {
   const defaultItems = [
@@ -34,7 +36,11 @@ export const getAllItems = () => {
 // Função para adicionar um novo item
 export const addItem = (item) => {
   const items = getAllItems();
-  const newItem = { ...item, id: Date.now() };
+  const newItem = {
+    ...item,
+    id: Date.now(),
+    date: format(new Date(), "yyyy-MM-dd 'on' EEEE") // Add day of the week
+  };
   items.push(newItem);
   localStorage.setItem('lostAndFoundItems', JSON.stringify(items));
   return newItem;
